@@ -1,0 +1,45 @@
+.Primary-Section {
+    margin: 0 auto;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    h2 {
+        color: white;
+        font-family: "Poppins";
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .Search{
+        display: flex;
+        width: 100%;
+        height: 20px;
+        margin:0 5px;
+        .Search-Input {
+            padding: 10px;
+            width: 100%;
+            height: 15px;
+            border-radius: 10px 0 0 10px;
+            font-size: 20px;
+        }
+        .Search-Btn {
+            height: 40px;
+            width: 40px;
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+            &::selection {
+                border-color: white;
+            }
+        }
+    }
+        
+    
+}
+
+@media (max-width:450px) {
+    .Primary-Section {
+        width: auto;
+    }
+}
