@@ -1,13 +1,31 @@
 <section>
     <div class="Primary-Section">
         <h2>Procure pelo nome de um usuário do Github e encontre seus repositórios públicos</h2>
-        <label class="Search">
-            <input class="Search-Input" type="text" [(ngModel)]="term" (keyup.enter)="search(term)" placeholder="Digite o nome do usuário">
-            <button class="Search-Btn">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div *ngIf="erro" class="Error">
+            <p>{{erro}}</p>
+        </div>
+        <label class="Search" >
+            <input required="string" id="userId" class="Search-Input" type="text" [(ngModel)]="term" (keyup.enter)="onSearch(term)" placeholder="Digite o nome do usuário">
+            <button class="Search-Btn" type="submit" (click)="onSearch(term)">
+                <svg id="Lupa" width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="black"/>
                     </svg>                    
               </button>
         </label>
     </div>
+    <div *ngIf="!erro" class="Secondary-Section">
+        <h1 >{{title}}</h1>
+        <div class="Repositorios">
+            <div *ngFor="let repo of repos" class="Card">
+                <div>
+                    <svg width="29" height="27" viewBox="0 0 29 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.2734 2.99531L3.39844 6.58125C3.12656 6.66563 2.94531 6.91875 2.94531 7.17188V19.8281C2.94531 20.1023 3.12656 20.3344 3.39844 20.4188L14.2734 24.0047C14.3414 24.0258 14.432 24.0469 14.5 24.0469C14.5453 24.0469 14.568 24.0469 14.6133 24.0469H14.6359C14.6586 24.0469 14.6813 24.0258 14.7039 24.0258L25.5789 20.4398C25.8508 20.3555 26.032 20.1023 26.032 19.8492V7.17188V7.15078C26.032 7.12969 26.032 7.0875 26.032 7.06641V7.04531C25.9867 6.83438 25.8281 6.64453 25.6016 6.58125L20.1641 4.78828H20.1414C20.0055 4.7461 19.8242 4.725 19.6656 4.78828L9.0625 8.26875C8.79062 8.35313 8.60938 8.60625 8.60938 8.85938V11.1797C8.60938 11.5383 8.90391 11.8125 9.28906 11.8125C9.67422 11.8125 9.96875 11.5383 9.96875 11.1797V9.30235L19.8922 6.03281L23.3359 7.17188L14.2734 10.1672C14.0016 10.2516 13.8203 10.4836 13.8203 10.7578C13.8203 10.7578 13.8203 10.7578 13.8203 10.7789V22.5492L4.30469 19.3852V7.61485L14.7266 4.17656C15.0891 4.05 15.2703 3.69141 15.1344 3.375C15.0211 3.0375 14.6359 2.86875 14.2734 2.99531ZM15.1797 11.2008L24.6953 8.05781V19.3641L15.1797 22.507V11.2008Z" fill="black"/>
+                    </svg>    
+                    <h2>{{ repo.full_name }}</h2>
+                </div>
+                <p>{{ repo.description }}</p>
+                <a class="link" href="{{ repo.html_url }}" target="_blank">Ver no GitHub</a>
+            </div>
+        </div>
+    </div>   
 </section>
