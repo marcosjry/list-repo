@@ -9,3 +9,5 @@ Objetos de estudo:
 - Services no Angular;
 - Organização de Componentes;
 - Axios para requisição HTTP;
+
+#### https://repository-list.netlify.app/
